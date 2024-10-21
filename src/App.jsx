@@ -1,8 +1,20 @@
+import { useState } from "react";
+import randomValueFromArray from "./components/Random";
+
 export default function App() {
+    const [name, setName] = useState("Bob");
+    function handleClick() {
+        const inputName = prompt("名前を入力して下さい");
+        setName(inputName);
+    }
+
     const showStory = false;
-    const xItem = "";
-    const yItem = "";
-    const zItem = "";
+    const xArray = ["Willy the Goblin", "Big Daddy", "Father Christmas"];
+    const xItem = randomValueFromArray(xArray);
+    const yArray = ["the soup kitchen", "Disneyland", "the White House"];
+    const yItem = randomValueFromArray(yArray);
+    const zArray = ["spontaneously combusted", "melted into a puddle on the sidewalk", "turned into a slug and crawled away"];
+    const zItem = randomValueFromArray(zArray);
     const ukus = "us";
     return (
       <>
@@ -17,6 +29,7 @@ export default function App() {
           <input type="radio" value="uk" checked={ukus === "uk"} />
         </div>
         <div>
+          <button onClick={ handleClick }></button>
           <button>Generate random story</button>
         </div>
         {showStory && (
